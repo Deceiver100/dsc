@@ -1,0 +1,108 @@
+<!--  -->
+<template>
+  <div class="footer">
+    <ul>
+      <router-link to="/home" tag="li">
+        <div class="nav-img">
+          <i class="iconfont icon-shouye1" v-if="active.includes('home')"></i>
+          <i class="iconfont icon-shouye" v-else></i>
+        </div>
+        <span>首页</span>
+      </router-link>
+      <router-link to="/category" tag="li">
+        <div class="nav-img">
+          <i
+            class="iconfont icon-fenleibeifen"
+            v-if="active.includes('category')"
+          ></i>
+          <i class="iconfont icon-fenlei" v-else></i>
+        </div>
+        <span>分类</span>
+      </router-link>
+      <router-link to="/search" tag="li">
+        <div class="nav-img">
+          <i class="iconfont icon-faxian1" v-if="active.includes('search')"></i>
+          <i class="iconfont icon-faxian" v-else></i>
+        </div>
+        <span>搜索</span>
+      </router-link>
+      <router-link to="/cart" tag="li">
+        <div class="nav-img">
+          <i
+            class="iconfont icon-gouwucheman"
+            v-if="active.includes('cart')"
+          ></i>
+          <i class="iconfont icon-gouwuchekong" v-else></i>
+        </div>
+        <span>购物车</span>
+      </router-link>
+      <router-link to="/mine" tag="li">
+        <div class="nav-img">
+          <i class="iconfont icon-gerenzhongxin"></i>
+        </div>
+        <span>个人中心</span>
+      </router-link>
+    </ul>
+  </div>
+</template>
+
+<script>
+//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+//例如：import 《组件名称》 from '《组件路径》';
+
+export default {
+  //import引入的组件需要注入到对象中才能使用
+  components: {},
+  data() {
+    //这里存放数据
+    return {
+      active: "home",
+    };
+  },
+  //监听属性 类似于data概念
+  computed: {},
+  //监控data中的数据变化
+  watch: {},
+  //方法集合
+  methods: {},
+  beforeCreate() {}, //生命周期 - 创建之前
+  //生命周期 - 创建完成（可以访问当前this实例）
+  created() {},
+  beforeMount() {}, //生命周期 - 挂载之前
+  //生命周期 - 挂载完成（可以访问DOM元素）
+  mounted() {
+    this.active = this.$route.path.slice(1);
+  },
+  beforeUpdate() {}, //生命周期 - 更新之前
+  updated() {}, //生命周期 - 更新之后
+  beforeDestroy() {}, //生命周期 - 销毁之前
+  destroyed() {}, //生命周期 - 销毁完成
+  activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
+};
+</script>
+<style lang="less">
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-top: 1px solid #ccc;
+  z-index: 10000;
+  ul {
+    display: flex;
+    height: 4.9rem;
+    align-items: center;
+    li {
+      width: 20%;
+      text-align: center;
+      .nav-img {
+        font-size: 2.2rem;
+      }
+    }
+    .router-link-active {
+      color: red;
+    }
+  }
+}
+</style>
